@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laotearoa · Namsan Mansion — Recycling</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg:#0c0f12; --bg2:#131820; --bg3:#1a2130;
+  --gold:#c4a96a; --gold-lt:#dfc48a;
+  --border:rgba(196,169,106,0.14); --cream:#f0ead8; --muted:#7a8a9e; --body:#b0bece;
+  --green:rgba(76,175,125,0.08); --green-b:rgba(76,175,125,0.2);
+  --amber:rgba(232,168,48,0.08); --amber-b:rgba(232,168,48,0.2);
+  --blue:rgba(80,140,220,0.08); --blue-b:rgba(80,140,220,0.2);
+  --red:rgba(220,80,80,0.08); --red-b:rgba(220,80,80,0.22);
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--body); font-family:'DM Sans',sans-serif; font-weight:300; overflow-x:hidden; }
+
+/* HEADER */
+header { text-align:center; padding:3.5rem 2rem 2.5rem; position:relative; border-bottom:1px solid var(--border); }
+header::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 80% at 50% 0%, rgba(196,169,106,0.07) 0%, transparent 65%); pointer-events:none; }
+.hbrand { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold); margin-bottom:0.9rem; position:relative; }
+.hname { font-size:clamp(1.9rem,6vw,2.8rem); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--cream); line-height:1; position:relative; }
+.haddr { margin-top:0.6rem; font-size:0.8rem; letter-spacing:0.1em; color:var(--muted); font-family:'DM Mono',monospace; position:relative; }
+.hrule { width:1px; height:28px; background:linear-gradient(to bottom,var(--gold),transparent); margin:1.4rem auto 0; }
+
+/* GUIDE TITLE */
+.guide-title { text-align:center; padding:2.5rem 1.5rem 2rem; border-bottom:1px solid var(--border); }
+.guide-eyebrow { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem; }
+.guide-h { font-size:clamp(1.2rem,3.5vw,1.6rem); font-weight:300; letter-spacing:0.22em; text-transform:uppercase; color:var(--cream); margin-bottom:0.7rem; }
+.guide-desc { font-size:0.9rem; color:var(--muted); max-width:520px; margin:0 auto; line-height:1.7; }
+
+/* CONTENT */
+.content { max-width:680px; margin:0 auto; padding:2rem 1.25rem 5rem; display:flex; flex-direction:column; gap:1.25rem; }
+
+/* WASTE CARD */
+.waste-card { border-radius:14px; overflow:hidden; border:1px solid var(--border); }
+.waste-head { padding:1.1rem 1.4rem; display:flex; align-items:center; gap:1rem; }
+.waste-badge { width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; }
+.waste-head-text {}
+.waste-tag { font-family:'DM Mono',monospace; font-size:0.57rem; letter-spacing:0.22em; text-transform:uppercase; margin-bottom:0.2rem; }
+.waste-title { font-size:1.05rem; font-weight:500; color:var(--cream); }
+.waste-body { padding:1rem 1.4rem 1.3rem; display:flex; flex-direction:column; gap:0.6rem; }
+.waste-row { display:flex; gap:0.75rem; align-items:flex-start; font-size:0.88rem; line-height:1.65; color:var(--body); }
+.waste-row strong { color:var(--cream); font-weight:500; }
+.dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:7px; }
+
+/* BAG VISUAL */
+.bag-visual { margin:0.2rem 0 0.6rem; padding:0.75rem 1rem; border-radius:8px; font-size:0.85rem; display:flex; align-items:center; gap:0.75rem; }
+.bag-icon { font-size:1.4rem; flex-shrink:0; }
+.bag-desc { color:var(--cream); font-weight:500; font-size:0.9rem; line-height:1.5; }
+.bag-sub { font-size:0.8rem; color:var(--muted); margin-top:2px; }
+
+/* NOTE */
+.note { display:flex; gap:0.75rem; padding:0.8rem 1rem; border-radius:10px; font-size:0.85rem; line-height:1.65; align-items:flex-start; }
+.note.info { background:rgba(196,169,106,0.07); border:1px solid rgba(196,169,106,0.18); }
+.note.warn { background:rgba(232,168,48,0.08); border:1px solid rgba(232,168,48,0.22); }
+.note.ok   { background:rgba(76,175,125,0.08); border:1px solid rgba(76,175,125,0.22); }
+.ni { flex-shrink:0; font-size:1rem; margin-top:1px; }
+.nt { color:var(--body); }
+.nt strong { color:var(--cream); font-weight:500; }
+
+/* COLLECTION TIME BLOCK */
+.collection-block { background:var(--bg2); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.5rem; display:flex; gap:1.2rem; align-items:flex-start; }
+.cb-icon { font-size:1.6rem; flex-shrink:0; margin-top:2px; }
+.cb-label { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.cb-time { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--cream); font-weight:300; margin-bottom:6px; }
+.cb-note { font-size:0.85rem; color:var(--body); line-height:1.65; }
+.cb-note strong { color:var(--cream); font-weight:500; }
+
+/* FOOTER */
+footer { text-align:center; padding:3rem 2rem; border-top:1px solid var(--border); font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); line-height:2; }
+footer span { color:var(--gold); }
+.back-link { display:inline-flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); text-decoration:none; padding:0.6rem 1.2rem; border:1px solid var(--border); border-radius:6px; margin-bottom:0.75rem; transition:background 0.2s; }
+.back-link:hover { background:rgba(196,169,106,0.08); }
+.back-link::before { content:'←'; font-size:13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hbrand">Laotearoa &nbsp;·&nbsp; Seoul</div>
+  <div class="hname">Namsan Mansion</div>
+  <div class="haddr">서울시 용산구 후암로28길 46 101호</div>
+  <div class="hrule"></div>
+</header>
+
+<div class="guide-title">
+  <div class="guide-eyebrow">House Guide</div>
+  <div class="guide-h">Waste &amp; Recycling</div>
+  <div class="guide-desc">Korea has a strict recycling policy. Thank you for your cooperation — it makes a real difference.</div>
+</div>
+
+<div class="content">
+
+  <!-- TRASH BINS -->
+  <div class="note info">
+    <span class="ni">🗑️</span>
+    <span class="nt"><strong>Trash Bins:</strong> Main bins are located in the kitchen. Small bins in the rooms are for temporary use only — please transfer to the kitchen bins regularly.</span>
+  </div>
+
+  <!-- GENERAL WASTE -->
+  <div class="waste-card" style="background:var(--bg2)">
+    <div class="waste-head" style="background:rgba(220,80,80,0.07); border-bottom:1px solid rgba(220,80,80,0.15)">
+      <div class="waste-badge" style="background:rgba(220,80,80,0.12); border:1px solid rgba(220,80,80,0.25)">🛍️</div>
+      <div class="waste-head-text">
+        <div class="waste-tag" style="color:#e87070">General Waste</div>
+        <div class="waste-title">일반 쓰레기</div>
+      </div>
+    </div>
+    <div class="waste-body">
+      <div class="bag-visual" style="background:rgba(220,80,80,0.07); border:1px solid rgba(220,80,80,0.15)">
+        <span class="bag-icon">🖨️</span>
+        <div>
+          <div class="bag-desc">Printed / Patterned Bag</div>
+          <div class="bag-sub">Use the bag with printed designs or images</div>
+        </div>
+      </div>
+      <div class="waste-row"><span class="dot" style="background:#e87070"></span><span>For <strong>non-recyclable</strong> items that don't fit other categories.</span></div>
+      <div class="waste-row"><span class="dot" style="background:#e87070"></span><span>Rinse food containers before disposal to reduce odour.</span></div>
+    </div>
+  </div>
+
+  <!-- RECYCLING -->
+  <div class="waste-card" style="background:var(--bg2)">
+    <div class="waste-head" style="background:rgba(80,140,220,0.07); border-bottom:1px solid rgba(80,140,220,0.18)">
+      <div class="waste-badge" style="background:rgba(80,140,220,0.12); border:1px solid rgba(80,140,220,0.25)">♻️</div>
+      <div class="waste-head-text">
+        <div class="waste-tag" style="color:#70a0e8">Recyclables</div>
+        <div class="waste-title">재활용 쓰레기</div>
+      </div>
+    </div>
+    <div class="waste-body">
+      <div class="bag-visual" style="background:rgba(80,140,220,0.07); border:1px solid rgba(80,140,220,0.15)">
+        <span class="bag-icon">🫙</span>
+        <div>
+          <div class="bag-desc">Clear, Unprinted Plastic Bag</div>
+          <div class="bag-sub">Plain transparent bag — no prints or patterns</div>
+        </div>
+      </div>
+      <div class="waste-row"><span class="dot" style="background:#70a0e8"></span><span>Bottles, cans, plastics, cardboard, glass.</span></div>
+      <div class="waste-row"><span class="dot" style="background:#70a0e8"></span><span><strong>Rinse before disposal.</strong> Clean items recycle better and prevent contamination.</span></div>
+    </div>
+  </div>
+
+  <!-- FOOD WASTE -->
+  <div class="waste-card" style="background:var(--bg2)">
+    <div class="waste-head" style="background:rgba(232,168,48,0.07); border-bottom:1px solid rgba(232,168,48,0.18)">
+      <div class="waste-badge" style="background:rgba(232,168,48,0.12); border:1px solid rgba(232,168,48,0.25)">🌽</div>
+      <div class="waste-head-text">
+        <div class="waste-tag" style="color:#e8b848">Food Waste</div>
+        <div class="waste-title">음식물 쓰레기</div>
+      </div>
+    </div>
+    <div class="waste-body">
+      <div class="bag-visual" style="background:rgba(232,168,48,0.07); border:1px solid rgba(232,168,48,0.15)">
+        <span class="bag-icon">🟡</span>
+        <div>
+          <div class="bag-desc">Yellow Bag</div>
+          <div class="bag-sub">Designated yellow food waste bag</div>
+        </div>
+      </div>
+      <div class="waste-row"><span class="dot" style="background:#e8b848"></span><span>For <strong>edible food scraps only</strong> — vegetable peels, leftovers, fruit flesh.</span></div>
+      <div class="waste-row"><span class="dot" style="background:#e8b848"></span><span><strong>No bones, shells, pits, or fruit seeds.</strong> These go in general waste.</span></div>
+      <div class="waste-row"><span class="dot" style="background:#e8b848"></span><span>Seal the bag tightly and place in the <strong>small white bin</strong> provided.</span></div>
+    </div>
+  </div>
+
+  <!-- PAPER WASTE -->
+  <div class="waste-card" style="background:var(--bg2)">
+    <div class="waste-head" style="background:rgba(76,175,125,0.07); border-bottom:1px solid rgba(76,175,125,0.18)">
+      <div class="waste-badge" style="background:rgba(76,175,125,0.12); border:1px solid rgba(76,175,125,0.25)">📄</div>
+      <div class="waste-head-text">
+        <div class="waste-tag" style="color:#70c8a0">Paper Waste</div>
+        <div class="waste-title">종이류</div>
+      </div>
+    </div>
+    <div class="waste-body">
+      <div class="waste-row"><span class="dot" style="background:#70c8a0"></span><span>Stack <strong>clean, dry paper</strong> — newspapers, cardboard, paper bags.</span></div>
+      <div class="waste-row"><span class="dot" style="background:#70c8a0"></span><span>Bundle or place in a bag or box and <strong>leave outside</strong> for collection.</span></div>
+      <div class="waste-row"><span class="dot" style="background:#70c8a0"></span><span>Do not mix wet or food-stained paper — this goes in general waste.</span></div>
+    </div>
+  </div>
+
+  <!-- COLLECTION TIME -->
+  <div class="collection-block">
+    <span class="cb-icon">🌙</span>
+    <div>
+      <div class="cb-label">Trash Collection Time</div>
+      <div class="cb-time">By 7:00 PM</div>
+      <p class="cb-note">Place sealed trash bags by the <strong>sidewalk near the Pole</strong> before 7 PM. Trash is collected at night. Do not leave bags out during the day.</p>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <span class="ni">⚠️</span>
+    <span class="nt">Using the <strong>wrong bag type</strong> or mixing waste incorrectly can result in fines under Korean law. When in doubt, message us and we'll help.</span>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="back-link">Back to home</a><br>
+  <span>Laotearoa</span> · Namsan Mansion<br>
+  Need help? Message us on Airbnb
+</footer>
+
+</body>
+</html>
