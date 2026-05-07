@@ -41,9 +41,9 @@ body { background:var(--bg); color:var(--mid); font-family:'DM Sans',sans-serif;
   font-weight:600; line-height:1; white-space:nowrap;
 }
 .topbar-bottom-row {
-  display:flex; align-items:flex-end; justify-content:space-between; gap:6px;
+  display:flex; align-items:flex-end; gap:6px; overflow:hidden;
 }
-.topbar-addr { display:flex; flex-direction:column; gap:1px; overflow:hidden; flex:1; min-width:0; }
+.topbar-addr { display:flex; flex-direction:column; gap:1px; overflow:hidden; max-width:100%; min-width:0; }
 .topbar-addr-ko {
   font-family:'DM Mono',monospace;
   font-size:0.55rem; letter-spacing:0.03em;
@@ -52,9 +52,9 @@ body { background:var(--bg); color:var(--mid); font-family:'DM Sans',sans-serif;
 }
 .topbar-addr-en {
   font-family:'DM Mono',monospace;
-  font-size:0.55rem; letter-spacing:0.03em;
+  font-size:0.55rem; letter-spacing:-0.03em;
   color:var(--gold); text-decoration:none;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;
 }
 .topbar-addr-en:hover { opacity:0.8; }
 .topbar-sub {
@@ -318,9 +318,9 @@ footer {
         <a class="topbar-addr-en" href="https://maps.google.com/?q=46+Huam-ro+28-gil,+Yongsan-gu,+Seoul" target="_blank">46 Huam-ro 28-gil, Yongsan-gu, Seoul · Unit 101 ↗</a>
         <span class="topbar-addr-ko">서울시 용산구 후암로28길 46 101호</span>
       </div>
-      <div class="topbar-sub">Laotearoa Seoul</div>
     </div>
   </div>
+  <div class="topbar-sub">Laotearoa Seoul</div>
 </div>
 
 <!-- WIFI STRIP -->
